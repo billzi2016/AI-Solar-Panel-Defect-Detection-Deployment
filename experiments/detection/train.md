@@ -18,7 +18,7 @@ n < s < m < l < x
 | `l` | about 25.3M | about 43.7M | Formal default result | 4 | Large model, stronger baseline for final comparison, but more expensive. |
 | `x` | about 56.9M | about 68.2M | Maximum-size stress run | 2 | Highest capacity and memory cost; use only when resources allow it. |
 
-The parameter counts are approximate Ultralytics model-family values. They are meant for planning memory and runtime cost; for an exact count in the installed environment, print `model.info()` from the Ultralytics model object. All configs use `epochs: 100`, `imgsz: 640`, and `patience: 3`. `patience: 3` enables early stopping when validation metrics stop improving, so a model does not keep training for many epochs after it has already plateaued. If small defects are missed, `imgsz` can be increased later, but batch size usually has to decrease when image size increases.
+The parameter counts are approximate Ultralytics model-family values. They are meant for planning memory and runtime cost; for an exact count in the installed environment, print `model.info()` from the Ultralytics model object. All configs use `epochs: 100`, `imgsz: 640`, and `patience: 3`. `patience: 3` enables Ultralytics early stopping when the validation fitness score stops improving. That fitness score is mainly driven by validation mAP, so early stopping follows validation detection quality rather than training loss alone. If small defects are missed, `imgsz` can be increased later, but batch size usually has to decrease when image size increases.
 
 # PVEL-AD
 

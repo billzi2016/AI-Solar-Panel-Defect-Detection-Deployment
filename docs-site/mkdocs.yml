@@ -41,6 +41,7 @@ plugins:
                 - Dataset Statistics Report: en/data_tools/dataset_report.md
             - Experiments:
                 - Overview: en/experiments/README.md
+                - Experiment Report: en/experiments/report.md
                 - Detection: en/experiments/detection/README.md
                 - YOLO Training Matrix: en/experiments/detection/train.md
                 - ELPV: en/experiments/elpv/README.md
@@ -64,6 +65,7 @@ plugins:
                 - 数据集统计报告: zh/data_tools/dataset_report.md
             - 实验:
                 - 总览: zh/experiments/README.md
+                - 实验报告: zh/experiments/report.md
                 - 检测实验: zh/experiments/detection/README.md
                 - YOLO 训练矩阵: zh/experiments/detection/train.md
                 - ELPV: zh/experiments/elpv/README.md
@@ -95,6 +97,7 @@ nav:
       - Dataset Statistics Report: en/data_tools/dataset_report.md
   - Experiments:
       - Overview: en/experiments/README.md
+      - Experiment Report: en/experiments/report.md
       - Detection: en/experiments/detection/README.md
       - YOLO Training Matrix: en/experiments/detection/train.md
       - ELPV: en/experiments/elpv/README.md
