@@ -71,3 +71,17 @@ Run the report generator from the project root:
 ```bash
 python3 data_tools/stats/build_dataset_report.py
 ```
+
+## Experiments
+
+Detection experiments live in `experiments/detection/` and use Ultralytics YOLO instead of a custom detector implementation. Convert local VOC annotations first:
+
+```bash
+python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pvel_ad
+```
+
+Then run the YOLO wrapper from the project root:
+
+```bash
+python3 experiments/detection/run_yolo.py train --data datasets/processed/yolo/pvel_ad/dataset.yaml --epochs 1 --model yolov8n.pt --name pvel_ad_smoke
+```

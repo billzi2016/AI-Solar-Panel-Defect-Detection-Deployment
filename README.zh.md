@@ -71,3 +71,17 @@ https://billzi2016.github.io/AI-Solar-Panel-Defect-Detection-Deployment/
 ```bash
 python3 data_tools/stats/build_dataset_report.py
 ```
+
+## 实验
+
+检测实验放在 `experiments/detection/`，使用 Ultralytics YOLO，不实现自定义检测器。先把本地 VOC 标注转换成 YOLO 目录：
+
+```bash
+python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pvel_ad
+```
+
+然后在项目根目录运行 YOLO wrapper：
+
+```bash
+python3 experiments/detection/run_yolo.py train --data datasets/processed/yolo/pvel_ad/dataset.yaml --epochs 1 --model yolov8n.pt --name pvel_ad_smoke
+```
