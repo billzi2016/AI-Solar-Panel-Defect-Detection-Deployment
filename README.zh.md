@@ -80,8 +80,14 @@ python3 data_tools/stats/build_dataset_report.py
 python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pvel_ad
 ```
 
-然后在项目根目录运行 YOLO wrapper：
+然后在项目根目录运行完整训练入口。YOLO11 作为默认实验模型，YOLOv8 作为 baseline 保留，用来比较不同模型版本的结果。
 
 ```bash
-python3 experiments/detection/run_yolo.py train --data datasets/processed/yolo/pvel_ad/dataset.yaml --epochs 1 --model yolov8n.pt --name pvel_ad_smoke
+./experiments/detection/train_yolo11.sh
+```
+
+YOLOv8 baseline：
+
+```bash
+./experiments/detection/train_yolov8.sh
 ```

@@ -5,8 +5,8 @@
 ## 流程
 
 1. 把已下载的 VOC 格式数据集转换成 YOLO 目录。
-2. 先跑短训练，验证数据路径、标签、batch 和输出目录是否正常。
-3. 短训练成功后再运行更长训练。
+2. 运行 YOLO11 训练入口，作为当前默认实验。
+3. 用同一份处理后的数据运行 YOLOv8 baseline。
 4. 验证训练得到的 checkpoint。
 5. 导出 ONNX，用于后续部署检查。
 
@@ -24,24 +24,46 @@ PV-Multi-Defect：
 python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pv_multi_defect
 ```
 
-## 短训练
+## 完整训练
 
-短训练只用于检查链路。它会验证 Ultralytics 能否读取图片、解析标签、创建 batch 并写出结果。
+下面两个 shell 脚本用于完整训练。它们使用同一份处理后的数据和同一个 wrapper，因此对比重点是模型版本，而不是项目里有两套训练逻辑。
+
+YOLO11 默认：
 
 ```bash
-python3 experiments/detection/run_yolo.py train --data datasets/processed/yolo/pvel_ad/dataset.yaml --epochs 1 --imgsz 640 --model yolov8n.pt --name pvel_ad_smoke
+./experiments/detection/train_yolo11.sh
+```
+
+YOLOv8 baseline：
+
+```bash
+./experiments/detection/train_yolov8.sh
+```
+
+两个脚本都支持环境变量覆盖：
+
+```bash
+EPOCHS=50 BATCH=8 DEVICE=0 ./experiments/detection/train_yolo11.sh
+```
+
+## 短链路检查
+
+短链路检查放在 `tests/smoke/`，因为它是测试工具，不是完整实验。
+
+```bash
+./tests/smoke/test_yolo_detection_pipeline.sh
 ```
 
 ## 验证
 
 ```bash
-python3 experiments/detection/run_yolo.py val --data datasets/processed/yolo/pvel_ad/dataset.yaml --model outputs/detection/pvel_ad_smoke/weights/best.pt
+python3 experiments/detection/run_yolo.py val --data datasets/processed/yolo/pvel_ad/dataset.yaml --model outputs/detection/pvel_ad_yolo11n/weights/best.pt
 ```
 
 ## 导出
 
 ```bash
-python3 experiments/detection/run_yolo.py export --model outputs/detection/pvel_ad_smoke/weights/best.pt --format onnx
+python3 experiments/detection/run_yolo.py export --model outputs/detection/pvel_ad_yolo11n/weights/best.pt --format onnx
 ```
 
 输出写入 `outputs/detection/`，该目录由 `.gitignore` 忽略。

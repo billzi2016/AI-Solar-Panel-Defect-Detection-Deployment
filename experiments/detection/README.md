@@ -5,8 +5,8 @@ This directory contains experiment entry points for object detection. The projec
 ## Workflow
 
 1. Convert a downloaded VOC-style dataset to YOLO layout.
-2. Run a small smoke training job to verify the data path and labels.
-3. Run a longer training job only after the smoke job succeeds.
+2. Run the YOLO11 training entry point as the current default experiment.
+3. Run the YOLOv8 baseline with the same processed dataset.
 4. Validate the trained checkpoint.
 5. Export the checkpoint to ONNX for deployment checks.
 
@@ -24,24 +24,46 @@ PV-Multi-Defect:
 python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pv_multi_defect
 ```
 
-## Smoke Training
+## Full Training
 
-The smoke run is intentionally short. It checks that Ultralytics can read images, parse labels, create batches, and write outputs.
+The shell scripts below run full training. They use the same processed dataset and the same wrapper, so the comparison focuses on the model version instead of different project logic.
+
+YOLO11 default:
 
 ```bash
-python3 experiments/detection/run_yolo.py train --data datasets/processed/yolo/pvel_ad/dataset.yaml --epochs 1 --imgsz 640 --model yolov8n.pt --name pvel_ad_smoke
+./experiments/detection/train_yolo11.sh
+```
+
+YOLOv8 baseline:
+
+```bash
+./experiments/detection/train_yolov8.sh
+```
+
+Both scripts accept environment overrides:
+
+```bash
+EPOCHS=50 BATCH=8 DEVICE=0 ./experiments/detection/train_yolo11.sh
+```
+
+## Smoke Check
+
+Smoke checks live under `tests/smoke/` because they are test utilities, not full experiments.
+
+```bash
+./tests/smoke/test_yolo_detection_pipeline.sh
 ```
 
 ## Validation
 
 ```bash
-python3 experiments/detection/run_yolo.py val --data datasets/processed/yolo/pvel_ad/dataset.yaml --model outputs/detection/pvel_ad_smoke/weights/best.pt
+python3 experiments/detection/run_yolo.py val --data datasets/processed/yolo/pvel_ad/dataset.yaml --model outputs/detection/pvel_ad_yolo11n/weights/best.pt
 ```
 
 ## Export
 
 ```bash
-python3 experiments/detection/run_yolo.py export --model outputs/detection/pvel_ad_smoke/weights/best.pt --format onnx
+python3 experiments/detection/run_yolo.py export --model outputs/detection/pvel_ad_yolo11n/weights/best.pt --format onnx
 ```
 
 Outputs are written under `outputs/detection/`, which is ignored by git.

@@ -34,7 +34,7 @@ def parse_args() -> argparse.Namespace:
 
     train = subparsers.add_parser("train", help="Train a YOLO detector.")
     train.add_argument("--data", required=True, type=Path)
-    train.add_argument("--model", default="yolov8n.pt")
+    train.add_argument("--model", default="yolo11n.pt")
     train.add_argument("--epochs", default=1, type=int)
     train.add_argument("--imgsz", default=640, type=int)
     train.add_argument("--batch", default=8, type=int)

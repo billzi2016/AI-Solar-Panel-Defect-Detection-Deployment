@@ -80,8 +80,14 @@ Detection experiments live in `experiments/detection/` and use Ultralytics YOLO 
 python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pvel_ad
 ```
 
-Then run the YOLO wrapper from the project root:
+Then run the full training entry points from the project root. YOLO11 is the default experiment, and YOLOv8 is kept as a baseline so results can be compared across model generations.
 
 ```bash
-python3 experiments/detection/run_yolo.py train --data datasets/processed/yolo/pvel_ad/dataset.yaml --epochs 1 --model yolov8n.pt --name pvel_ad_smoke
+./experiments/detection/train_yolo11.sh
+```
+
+YOLOv8 baseline:
+
+```bash
+./experiments/detection/train_yolov8.sh
 ```
