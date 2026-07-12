@@ -35,6 +35,8 @@ The shell scripts below run full training. They use the same wrapper, so the com
 | PVEL-AD | `./experiments/detection/train_yolo11_pvel_ad.sh` | `./experiments/detection/train_yolov8_pvel_ad.sh` |
 | PV-Multi-Defect | `./experiments/detection/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/train_yolov8_pv_multi_defect.sh` |
 
+The scripts above use `l` configs for formal training. The complete `n/s/m/l/x` matrix is documented in `train.md`. Local validation scripts use `n` configs and live in `experiments/detection/yolo_validation/`.
+
 PVEL-AD with YOLO11:
 
 ```bash

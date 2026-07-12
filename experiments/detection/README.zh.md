@@ -35,6 +35,8 @@ python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pv_multi
 | PVEL-AD | `./experiments/detection/train_yolo11_pvel_ad.sh` | `./experiments/detection/train_yolov8_pvel_ad.sh` |
 | PV-Multi-Defect | `./experiments/detection/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/train_yolov8_pv_multi_defect.sh` |
 
+上面的脚本使用 `l` 配置做正式训练。完整的 `n/s/m/l/x` 矩阵写在 `train.zh.md`。本机 validation 脚本使用 `n` 配置，放在 `experiments/detection/yolo_validation/`。
+
 PVEL-AD + YOLO11：
 
 ```bash

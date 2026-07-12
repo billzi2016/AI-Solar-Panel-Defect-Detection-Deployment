@@ -8,7 +8,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-CONFIG="${CONFIG:-${PROJECT_ROOT}/configs/detection/pv_multi_defect_yolov8l.yaml}"
+CONFIG="${CONFIG:-${PROJECT_ROOT}/configs/detection/pv_multi_defect_yolov8n.yaml}"
 DEVICE="${DEVICE:-}"
 
 CMD=(

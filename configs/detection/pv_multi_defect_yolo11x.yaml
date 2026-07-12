@@ -1,0 +1,8 @@
+data: datasets/processed/yolo/pv_multi_defect/dataset.yaml
+model: yolo11x.pt
+epochs: 100
+imgsz: 640
+batch: 2
+patience: 3
+device: null
+name: pv_multi_defect_yolo11x

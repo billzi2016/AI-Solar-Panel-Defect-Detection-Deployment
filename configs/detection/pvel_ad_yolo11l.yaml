@@ -1,0 +1,8 @@
+data: datasets/processed/yolo/pvel_ad/dataset.yaml
+model: yolo11l.pt
+epochs: 100
+imgsz: 640
+batch: 4
+patience: 3
+device: null
+name: pvel_ad_yolo11l
