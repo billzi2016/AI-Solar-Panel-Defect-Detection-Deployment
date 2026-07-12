@@ -1,20 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Full YOLOv8 baseline training entry point for the PVEL-AD detection dataset.
+# Full YOLOv8 baseline training entry point for the PV-Multi-Defect detection dataset.
 # Override EPOCHS, IMGSZ, BATCH, DEVICE, DATASET_YAML, or MODEL from the shell
-# when running on a different machine or GPU.
+# when running on a different dataset, machine, GPU, or Apple MPS backend.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-DATASET_YAML="${DATASET_YAML:-${PROJECT_ROOT}/datasets/processed/yolo/pvel_ad/dataset.yaml}"
+DATASET_YAML="${DATASET_YAML:-${PROJECT_ROOT}/datasets/processed/yolo/pv_multi_defect/dataset.yaml}"
 MODEL="${MODEL:-yolov8n.pt}"
 EPOCHS="${EPOCHS:-100}"
 IMGSZ="${IMGSZ:-640}"
 BATCH="${BATCH:-16}"
 DEVICE="${DEVICE:-}"
-NAME="${NAME:-pvel_ad_yolov8n}"
+NAME="${NAME:-pv_multi_defect_yolov8n}"
 
 CMD=(
   python3 "${PROJECT_ROOT}/experiments/detection/run_yolo.py"

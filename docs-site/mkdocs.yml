@@ -40,6 +40,7 @@ plugins:
                 - Dataset Converters: en/data_tools/converters/README.md
                 - Dataset Statistics Report: en/data_tools/dataset_report.md
             - Experiments:
+                - Overview: en/experiments/README.md
                 - Detection: en/experiments/detection/README.md
             - Training: en/training.md
             - Deployment: en/deployment.md
@@ -59,6 +60,7 @@ plugins:
                 - 数据集格式转换工具: zh/data_tools/converters/README.md
                 - 数据集统计报告: zh/data_tools/dataset_report.md
             - 实验:
+                - 总览: zh/experiments/README.md
                 - 检测实验: zh/experiments/detection/README.md
             - 训练流程: zh/training.md
             - 部署流程: zh/deployment.md
@@ -86,6 +88,7 @@ nav:
       - Dataset Converters: en/data_tools/converters/README.md
       - Dataset Statistics Report: en/data_tools/dataset_report.md
   - Experiments:
+      - Overview: en/experiments/README.md
       - Detection: en/experiments/detection/README.md
   - Training: en/training.md
   - Deployment: en/deployment.md

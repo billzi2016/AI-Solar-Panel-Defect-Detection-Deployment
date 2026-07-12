@@ -26,24 +26,43 @@ python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pv_multi
 
 ## Full Training
 
-The shell scripts below run full training. They use the same processed dataset and the same wrapper, so the comparison focuses on the model version instead of different project logic.
+The shell scripts below run full training. They use the same wrapper, so the comparison focuses on the dataset and model version instead of different project logic.
 
-YOLO11 default:
+## Training Matrix
+
+| Dataset | YOLO11 | YOLOv8 |
+|---|---|---|
+| PVEL-AD | `./experiments/detection/train_yolo11_pvel_ad.sh` | `./experiments/detection/train_yolov8_pvel_ad.sh` |
+| PV-Multi-Defect | `./experiments/detection/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/train_yolov8_pv_multi_defect.sh` |
+
+PVEL-AD with YOLO11:
 
 ```bash
-./experiments/detection/train_yolo11.sh
+./experiments/detection/train_yolo11_pvel_ad.sh
 ```
 
-YOLOv8 baseline:
+PV-Multi-Defect with YOLO11:
 
 ```bash
-./experiments/detection/train_yolov8.sh
+./experiments/detection/train_yolo11_pv_multi_defect.sh
 ```
 
 Both scripts accept environment overrides:
 
 ```bash
-EPOCHS=50 BATCH=8 DEVICE=0 ./experiments/detection/train_yolo11.sh
+EPOCHS=50 BATCH=8 DEVICE=0 ./experiments/detection/train_yolo11_pvel_ad.sh
+```
+
+Apple Silicon can use MPS:
+
+```bash
+DEVICE=mps ./experiments/detection/train_yolo11_pvel_ad.sh
+```
+
+Use PV-Multi-Defect with its matching entry point:
+
+```bash
+./experiments/detection/train_yolo11_pv_multi_defect.sh
 ```
 
 ## Smoke Check
