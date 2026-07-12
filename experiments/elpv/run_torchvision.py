@@ -324,6 +324,11 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train torchvision models on ELPV image-level labels.")
     parser.add_argument("command", choices=["train"])
     parser.add_argument("--config", required=True, type=Path)
+    parser.add_argument("--device", default=None, help="Override the config device, for example cpu, cuda, cuda:0, or mps.")
+    parser.add_argument("--epochs", default=None, type=int, help="Override the config epoch count for local validation runs.")
+    parser.add_argument("--batch", default=None, type=int, help="Override the config batch size.")
+    parser.add_argument("--imgsz", default=None, type=int, help="Override the config image size.")
+    parser.add_argument("--name", default=None, help="Override the output directory name.")
     return parser.parse_args()
 
 
@@ -333,6 +338,16 @@ def main() -> None:
     configure_runtime_cache()
     args = parse_args()
     config = load_flat_yaml(args.config)
+    if args.device is not None:
+        config["device"] = args.device
+    if args.epochs is not None:
+        config["epochs"] = args.epochs
+    if args.batch is not None:
+        config["batch"] = args.batch
+    if args.imgsz is not None:
+        config["imgsz"] = args.imgsz
+    if args.name is not None:
+        config["name"] = args.name
     if args.command == "train":
         result = train(config)
         print(json.dumps({"output_dir": result["output_dir"], "best_epoch": result["best_epoch"]}, indent=2))

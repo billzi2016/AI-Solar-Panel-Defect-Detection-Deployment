@@ -39,8 +39,32 @@ The run is normal when `metrics.json` is created, `best_epoch` is greater than z
 
 ## Commands
 
+Run both ResNet-18 ELPV tasks:
+
+```bash
+./experiments/elpv/run_all_elpv_resnet.sh
+```
+
+Run both Swin-T ELPV tasks:
+
+```bash
+./experiments/elpv/run_all_elpv_swin.sh
+```
+
+Both scripts call the same runner and the same config files listed above. They only remove command repetition; the model, split, optimizer, metrics, and output paths still come from the YAML configs and `run_torchvision.py`.
+
+Set `DEVICE=mps`, `DEVICE=cpu`, or `DEVICE=cuda:0` when a specific backend is needed:
+
+```bash
+DEVICE=mps ./experiments/elpv/run_all_elpv_resnet.sh
+```
+
+Run one config directly:
+
 ```bash
 python3 experiments/elpv/run_torchvision.py train --config configs/elpv/resnet18_binary.yaml
+python3 experiments/elpv/run_torchvision.py train --config configs/elpv/resnet18_binary.yaml --device mps
+python3 experiments/elpv/run_torchvision.py train --config configs/elpv/resnet18_binary.yaml --epochs 1 --name elpv_resnet18_binary_smoke
 python3 experiments/elpv/run_torchvision.py train --config configs/elpv/swin_t_binary.yaml
 python3 experiments/elpv/run_torchvision.py train --config configs/elpv/resnet18_regression.yaml
 python3 experiments/elpv/run_torchvision.py train --config configs/elpv/swin_t_regression.yaml

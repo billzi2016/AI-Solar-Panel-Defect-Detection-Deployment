@@ -41,4 +41,5 @@ Smoke checks belong under `tests/smoke/`. They are short checks for data paths a
 
 ```bash
 ./tests/smoke/test_yolo_detection_pipeline.sh
+./tests/smoke/test_elpv_pipeline.sh
 ```

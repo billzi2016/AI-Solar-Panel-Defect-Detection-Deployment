@@ -14,16 +14,9 @@ import sys
 from pathlib import Path
 from typing import Any
 
-import torch
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_ROOT = PROJECT_ROOT / "outputs" / "deployment" / "elpv"
-
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from experiments.elpv.run_torchvision import build_model, load_flat_yaml  # noqa: E402
 
 
 def configure_runtime_cache() -> None:
@@ -34,6 +27,16 @@ def configure_runtime_cache() -> None:
     os.environ.setdefault("TMPDIR", str(cache_root))
     os.environ.setdefault("MPLCONFIGDIR", str(cache_root / "matplotlib"))
     os.environ.setdefault("TORCH_HOME", str(cache_root / "torch"))
+
+
+configure_runtime_cache()
+
+import torch
+
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from experiments.elpv.run_torchvision import build_model, load_flat_yaml  # noqa: E402
 
 
 def parse_args() -> argparse.Namespace:

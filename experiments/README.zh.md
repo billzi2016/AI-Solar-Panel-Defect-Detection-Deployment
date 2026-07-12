@@ -41,4 +41,5 @@ ELPV 不应该硬塞进 YOLO 检测器，因为它只有图像级概率标签，
 
 ```bash
 ./tests/smoke/test_yolo_detection_pipeline.sh
+./tests/smoke/test_elpv_pipeline.sh
 ```
