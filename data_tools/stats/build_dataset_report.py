@@ -12,13 +12,18 @@ import csv
 import json
 import math
 import shutil
+import sys
 import textwrap
 from pathlib import Path
 from typing import Iterable
 
 from PIL import Image, ImageDraw, ImageFont
 
-from dataloader import (
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from data_tools.utils import (
     RAW_ROOT,
     VocImageRecord,
     VocObject,
@@ -28,7 +33,6 @@ from dataloader import (
 )
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
 STATS_ROOT = PROJECT_ROOT / "data_tools" / "stats"
 ASSET_ROOT = STATS_ROOT / "assets"
 SOURCE_EXAMPLE_ROOT = STATS_ROOT / "source_examples"

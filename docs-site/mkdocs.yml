@@ -52,6 +52,7 @@ nav:
       - 算法说明: zh/algorithm.md
       - 数据工具:
           - 统计工具: zh/data_tools/README.md
+          - 数据读取工具: zh/data_tools/utils/README.md
           - 数据集统计报告: zh/data_tools/dataset_report.md
       - 训练流程: zh/training.md
       - 部署流程: zh/deployment.md
@@ -63,6 +64,7 @@ nav:
       - Algorithm: en/algorithm.md
       - Data Tools:
           - Statistics Tool: en/data_tools/README.md
+          - Data Loading Utilities: en/data_tools/utils/README.md
           - Dataset Statistics Report: en/data_tools/dataset_report.md
       - Training: en/training.md
       - Deployment: en/deployment.md

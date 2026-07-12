@@ -8,6 +8,7 @@ on:
       - main
     paths:
       - "docs-site/**"
+      - "data_tools/**"
       - "README.md"
       - "README.zh.md"
       - ".github/workflows/deploy-docs.yml"
@@ -47,6 +48,8 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

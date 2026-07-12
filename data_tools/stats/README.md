@@ -2,6 +2,8 @@
 
 This directory contains the dataset statistics tool and the report files it generates. Keeping the script, JSON summary, Markdown report, and small visual assets in one place makes the data audit easy to rerun and review.
 
+Dataset parsing is shared through `data_tools/utils/`. The statistics tool imports ELPV, PV-Multi-Defect, PVEL-AD, and Pascal VOC helpers from that package instead of keeping private loader code inside this report folder.
+
 ## Dataset Scope
 
 The project uses three public solar-defect datasets because each one answers a different modeling question.
