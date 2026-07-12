@@ -6,7 +6,7 @@ set -euo pipefail
 # Apple MPS without editing the YAML.
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../../.." && pwd)"
 
 CONFIG="${CONFIG:-${PROJECT_ROOT}/configs/detection/pvel_ad_yolo11l.yaml}"
 DEVICE="${DEVICE:-}"

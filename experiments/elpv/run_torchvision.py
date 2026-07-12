@@ -17,6 +17,22 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+OUTPUT_ROOT = PROJECT_ROOT / "outputs" / "elpv"
+
+
+def configure_runtime_cache() -> None:
+    """Set writable cache directories before model and plotting libraries run."""
+
+    cache_root = PROJECT_ROOT / ".cache" / "runtime"
+    cache_root.mkdir(parents=True, exist_ok=True)
+    os.environ.setdefault("TMPDIR", str(cache_root))
+    os.environ.setdefault("MPLCONFIGDIR", str(cache_root / "matplotlib"))
+    os.environ.setdefault("TORCH_HOME", str(cache_root / "torch"))
+
+
+configure_runtime_cache()
+
 import numpy as np
 import torch
 from PIL import Image
@@ -25,10 +41,6 @@ from sklearn.model_selection import train_test_split
 from torch import nn
 from torch.utils.data import DataLoader, Dataset
 from torchvision import models, transforms
-
-
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-OUTPUT_ROOT = PROJECT_ROOT / "outputs" / "elpv"
 
 
 @dataclass(frozen=True)
@@ -68,16 +80,6 @@ class ElpvDataset(Dataset):
         else:
             raise ValueError(f"Unsupported task: {self.task}")
         return tensor, target
-
-
-def configure_runtime_cache() -> None:
-    """Set writable cache directories before model and plotting libraries run."""
-
-    cache_root = PROJECT_ROOT / ".cache" / "runtime"
-    cache_root.mkdir(parents=True, exist_ok=True)
-    os.environ.setdefault("TMPDIR", str(cache_root))
-    os.environ.setdefault("MPLCONFIGDIR", str(cache_root / "matplotlib"))
-    os.environ.setdefault("TORCH_HOME", str(cache_root / "torch"))
 
 
 def parse_scalar(value: str) -> Any:
