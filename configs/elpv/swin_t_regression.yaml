@@ -1,0 +1,13 @@
+data_root: datasets/raw/elpv-dataset/src/elpv_dataset/data
+model: swin_t
+task: regression
+pretrained: false
+epochs: 20
+imgsz: 224
+batch: 16
+learning_rate: 0.0001
+weight_decay: 0.0001
+patience: 3
+seed: 42
+device: null
+name: elpv_swin_t_regression

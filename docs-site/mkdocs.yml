@@ -43,6 +43,7 @@ plugins:
                 - Overview: en/experiments/README.md
                 - Detection: en/experiments/detection/README.md
                 - YOLO Training Matrix: en/experiments/detection/train.md
+                - ELPV: en/experiments/elpv/README.md
             - Training: en/training.md
             - Deployment: en/deployment.md
             - Documentation: en/documentation.md
@@ -64,6 +65,7 @@ plugins:
                 - 总览: zh/experiments/README.md
                 - 检测实验: zh/experiments/detection/README.md
                 - YOLO 训练矩阵: zh/experiments/detection/train.md
+                - ELPV: zh/experiments/elpv/README.md
             - 训练流程: zh/training.md
             - 部署流程: zh/deployment.md
             - 文档维护: zh/documentation.md
@@ -93,6 +95,7 @@ nav:
       - Overview: en/experiments/README.md
       - Detection: en/experiments/detection/README.md
       - YOLO Training Matrix: en/experiments/detection/train.md
+      - ELPV: en/experiments/elpv/README.md
   - Training: en/training.md
   - Deployment: en/deployment.md
   - Documentation: en/documentation.md

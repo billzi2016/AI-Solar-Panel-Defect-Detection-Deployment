@@ -20,8 +20,8 @@ The YOLO experiment matrix has four full-training combinations:
 
 | Dataset | YOLO11 script | YOLOv8 script |
 |---|---|---|
-| PVEL-AD | `./experiments/detection/train_yolo11_pvel_ad.sh` | `./experiments/detection/train_yolov8_pvel_ad.sh` |
-| PV-Multi-Defect | `./experiments/detection/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/train_yolov8_pv_multi_defect.sh` |
+| PVEL-AD | `./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh` | `./experiments/detection/yolo_train/train_yolov8_pvel_ad.sh` |
+| PV-Multi-Defect | `./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/yolo_train/train_yolov8_pv_multi_defect.sh` |
 
 PVEL-AD is the main EL defect detection experiment because it has 12 long-tail defect classes. PV-Multi-Defect is the second detection experiment because it also has bounding boxes, but its images and defect classes describe visible panel-level defects.
 

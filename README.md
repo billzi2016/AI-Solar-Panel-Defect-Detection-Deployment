@@ -83,25 +83,25 @@ python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pvel_ad
 Then run the formal large-model training entry points from the project root. The default scripts use `l` configs. YOLO11 is the default experiment, and YOLOv8 is kept as a baseline so results can be compared across model generations.
 
 ```bash
-./experiments/detection/train_yolo11_pvel_ad.sh
+./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 YOLOv8 baseline:
 
 ```bash
-./experiments/detection/train_yolov8_pvel_ad.sh
+./experiments/detection/yolo_train/train_yolov8_pvel_ad.sh
 ```
 
 On Apple Silicon, use MPS through Ultralytics and PyTorch:
 
 ```bash
-DEVICE=mps ./experiments/detection/train_yolo11_pvel_ad.sh
+DEVICE=mps ./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 PV-Multi-Defect uses matching formal scripts:
 
 ```bash
-./experiments/detection/train_yolo11_pv_multi_defect.sh
+./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh
 ```
 
-For local resource-conscious validation, use the `n` scripts under `experiments/detection/yolo_validation/`.
+For local resource-conscious validation, run `./experiments/detection/run_all_yolo_n.sh`.

@@ -32,39 +32,39 @@ python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pv_multi
 
 | 数据集 | YOLO11 | YOLOv8 |
 |---|---|---|
-| PVEL-AD | `./experiments/detection/train_yolo11_pvel_ad.sh` | `./experiments/detection/train_yolov8_pvel_ad.sh` |
-| PV-Multi-Defect | `./experiments/detection/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/train_yolov8_pv_multi_defect.sh` |
+| PVEL-AD | `./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh` | `./experiments/detection/yolo_train/train_yolov8_pvel_ad.sh` |
+| PV-Multi-Defect | `./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/yolo_train/train_yolov8_pv_multi_defect.sh` |
 
 上面的脚本使用 `l` 配置做正式训练。完整的 `n/s/m/l/x` 矩阵写在 `train.zh.md`。本机 validation 脚本使用 `n` 配置，放在 `experiments/detection/yolo_validation/`。
 
 PVEL-AD + YOLO11：
 
 ```bash
-./experiments/detection/train_yolo11_pvel_ad.sh
+./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 PV-Multi-Defect + YOLO11：
 
 ```bash
-./experiments/detection/train_yolo11_pv_multi_defect.sh
+./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh
 ```
 
 两个脚本都支持环境变量覆盖：
 
 ```bash
-EPOCHS=50 BATCH=8 DEVICE=0 ./experiments/detection/train_yolo11_pvel_ad.sh
+CONFIG=configs/detection/pvel_ad_yolo11m.yaml DEVICE=0 ./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 Apple Silicon 可以使用 MPS：
 
 ```bash
-DEVICE=mps ./experiments/detection/train_yolo11_pvel_ad.sh
+DEVICE=mps ./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 PV-Multi-Defect 使用对应的训练入口：
 
 ```bash
-./experiments/detection/train_yolo11_pv_multi_defect.sh
+./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh
 ```
 
 ## 短链路检查

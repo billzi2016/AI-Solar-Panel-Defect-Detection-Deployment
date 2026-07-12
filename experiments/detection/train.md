@@ -10,15 +10,15 @@ n < s < m < l < x
 
 ## How Parameters Change With Model Size
 
-| Size | Role | Batch default | Why it changes |
-|---|---|---:|---|
-| `n` | Local validation and fast comparison | 16 | Smallest model, lowest memory cost, fastest way to check data and labels. |
-| `s` | Light experiment | 12 | More capacity than `n`, still manageable on limited hardware. |
-| `m` | Medium experiment | 8 | Better capacity, higher memory use, slower training. |
-| `l` | Formal default result | 4 | Large model, stronger baseline for final comparison, but more expensive. |
-| `x` | Maximum-size stress run | 2 | Highest capacity and memory cost; use only when resources allow it. |
+| Size | YOLO11 params | YOLOv8 params | Role | Batch default | Why it changes |
+|---|---:|---:|---|---:|---|
+| `n` | about 2.6M | about 3.2M | Local validation and fast comparison | 16 | Smallest model, lowest memory cost, fastest way to check data and labels. |
+| `s` | about 9.4M | about 11.2M | Light experiment | 12 | More capacity than `n`, still manageable on limited hardware. |
+| `m` | about 20.1M | about 25.9M | Medium experiment | 8 | Better capacity, higher memory use, slower training. |
+| `l` | about 25.3M | about 43.7M | Formal default result | 4 | Large model, stronger baseline for final comparison, but more expensive. |
+| `x` | about 56.9M | about 68.2M | Maximum-size stress run | 2 | Highest capacity and memory cost; use only when resources allow it. |
 
-All configs use `epochs: 100`, `imgsz: 640`, and `patience: 3`. `patience: 3` enables early stopping when validation metrics stop improving, so a model does not keep training for many epochs after it has already plateaued. If small defects are missed, `imgsz` can be increased later, but batch size usually has to decrease when image size increases.
+The parameter counts are approximate Ultralytics model-family values. They are meant for planning memory and runtime cost; for an exact count in the installed environment, print `model.info()` from the Ultralytics model object. All configs use `epochs: 100`, `imgsz: 640`, and `patience: 3`. `patience: 3` enables early stopping when validation metrics stop improving, so a model does not keep training for many epochs after it has already plateaued. If small defects are missed, `imgsz` can be increased later, but batch size usually has to decrease when image size increases.
 
 # PVEL-AD
 
@@ -26,7 +26,7 @@ PVEL-AD is the main EL cell defect detection dataset. It has 12 defect classes a
 
 ## YOLO11
 
-### n
+### Size: n, about 2.6M parameters
 
 Config: `configs/detection/pvel_ad_yolo11n.yaml`
 
@@ -34,7 +34,7 @@ Config: `configs/detection/pvel_ad_yolo11n.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_ad_yolo11n.yaml
 ```
 
-### s
+### Size: s, about 9.4M parameters
 
 Config: `configs/detection/pvel_ad_yolo11s.yaml`
 
@@ -42,7 +42,7 @@ Config: `configs/detection/pvel_ad_yolo11s.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_ad_yolo11s.yaml
 ```
 
-### m
+### Size: m, about 20.1M parameters
 
 Config: `configs/detection/pvel_ad_yolo11m.yaml`
 
@@ -50,7 +50,7 @@ Config: `configs/detection/pvel_ad_yolo11m.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_ad_yolo11m.yaml
 ```
 
-### l
+### Size: l, about 25.3M parameters
 
 Config: `configs/detection/pvel_ad_yolo11l.yaml`
 
@@ -58,7 +58,7 @@ Config: `configs/detection/pvel_ad_yolo11l.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_ad_yolo11l.yaml
 ```
 
-### x
+### Size: x, about 56.9M parameters
 
 Config: `configs/detection/pvel_ad_yolo11x.yaml`
 
@@ -68,7 +68,7 @@ python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_
 
 ## YOLOv8
 
-### n
+### Size: n, about 3.2M parameters
 
 Config: `configs/detection/pvel_ad_yolov8n.yaml`
 
@@ -76,7 +76,7 @@ Config: `configs/detection/pvel_ad_yolov8n.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_ad_yolov8n.yaml
 ```
 
-### s
+### Size: s, about 11.2M parameters
 
 Config: `configs/detection/pvel_ad_yolov8s.yaml`
 
@@ -84,7 +84,7 @@ Config: `configs/detection/pvel_ad_yolov8s.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_ad_yolov8s.yaml
 ```
 
-### m
+### Size: m, about 25.9M parameters
 
 Config: `configs/detection/pvel_ad_yolov8m.yaml`
 
@@ -92,7 +92,7 @@ Config: `configs/detection/pvel_ad_yolov8m.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_ad_yolov8m.yaml
 ```
 
-### l
+### Size: l, about 43.7M parameters
 
 Config: `configs/detection/pvel_ad_yolov8l.yaml`
 
@@ -100,7 +100,7 @@ Config: `configs/detection/pvel_ad_yolov8l.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pvel_ad_yolov8l.yaml
 ```
 
-### x
+### Size: x, about 68.2M parameters
 
 Config: `configs/detection/pvel_ad_yolov8x.yaml`
 
@@ -114,7 +114,7 @@ PV-Multi-Defect is the visible panel defect detection dataset. It has 5 classes 
 
 ## YOLO11
 
-### n
+### Size: n, about 2.6M parameters
 
 Config: `configs/detection/pv_multi_defect_yolo11n.yaml`
 
@@ -122,7 +122,7 @@ Config: `configs/detection/pv_multi_defect_yolo11n.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pv_multi_defect_yolo11n.yaml
 ```
 
-### s
+### Size: s, about 9.4M parameters
 
 Config: `configs/detection/pv_multi_defect_yolo11s.yaml`
 
@@ -130,7 +130,7 @@ Config: `configs/detection/pv_multi_defect_yolo11s.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pv_multi_defect_yolo11s.yaml
 ```
 
-### m
+### Size: m, about 20.1M parameters
 
 Config: `configs/detection/pv_multi_defect_yolo11m.yaml`
 
@@ -138,7 +138,7 @@ Config: `configs/detection/pv_multi_defect_yolo11m.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pv_multi_defect_yolo11m.yaml
 ```
 
-### l
+### Size: l, about 25.3M parameters
 
 Config: `configs/detection/pv_multi_defect_yolo11l.yaml`
 
@@ -146,7 +146,7 @@ Config: `configs/detection/pv_multi_defect_yolo11l.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pv_multi_defect_yolo11l.yaml
 ```
 
-### x
+### Size: x, about 56.9M parameters
 
 Config: `configs/detection/pv_multi_defect_yolo11x.yaml`
 
@@ -156,7 +156,7 @@ python3 experiments/detection/run_yolo.py train --config configs/detection/pv_mu
 
 ## YOLOv8
 
-### n
+### Size: n, about 3.2M parameters
 
 Config: `configs/detection/pv_multi_defect_yolov8n.yaml`
 
@@ -164,7 +164,7 @@ Config: `configs/detection/pv_multi_defect_yolov8n.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pv_multi_defect_yolov8n.yaml
 ```
 
-### s
+### Size: s, about 11.2M parameters
 
 Config: `configs/detection/pv_multi_defect_yolov8s.yaml`
 
@@ -172,7 +172,7 @@ Config: `configs/detection/pv_multi_defect_yolov8s.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pv_multi_defect_yolov8s.yaml
 ```
 
-### m
+### Size: m, about 25.9M parameters
 
 Config: `configs/detection/pv_multi_defect_yolov8m.yaml`
 
@@ -180,7 +180,7 @@ Config: `configs/detection/pv_multi_defect_yolov8m.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pv_multi_defect_yolov8m.yaml
 ```
 
-### l
+### Size: l, about 43.7M parameters
 
 Config: `configs/detection/pv_multi_defect_yolov8l.yaml`
 
@@ -188,7 +188,7 @@ Config: `configs/detection/pv_multi_defect_yolov8l.yaml`
 python3 experiments/detection/run_yolo.py train --config configs/detection/pv_multi_defect_yolov8l.yaml
 ```
 
-### x
+### Size: x, about 68.2M parameters
 
 Config: `configs/detection/pv_multi_defect_yolov8x.yaml`
 

@@ -36,7 +36,55 @@ PVEL-AD is used for the main long-tail detection track. The input is a near-infr
 | English report | `dataset_report.md` | Explains the dataset scale, label formats, class distribution, and sanity checks. |
 | Chinese report | `dataset_report.zh.md` | Same report for Chinese documentation. |
 | Generated figures | `assets/` | Bar charts and sampled image grids created from local files. |
-| Source examples | `source_examples/` | Small representative images copied from source dataset repositories for documentation display. |
+| Source examples | `datasets/raw/...` | A small allowlisted set of original project images kept for documentation display. The full datasets remain ignored. |
+
+## Original Project Images
+
+This section keeps a small set of original display images from the dataset projects in `datasets/raw/`. They provide source-level visual context before the generated statistics and sampled grids.
+
+### From ELPV Dataset
+
+The ELPV project describes the dataset as solar-cell crops extracted from high-resolution electroluminescence images of photovoltaic modules. It contains 2,624 normalized 300 x 300 grayscale samples from 44 modules. Each sample has a defect probability between 0 and 1 and a module type label, either mono- or polycrystalline.
+
+![Original ELPV overview](../../datasets/raw/elpv-dataset/doc/images/overview.jpg)
+
+Source description: the ELPV overview colors cell images by defect likelihood. A darker red overlay means a higher probability that the solar cell contains a defect.
+
+### From PV-Multi-Defect
+
+The PV-Multi-Defect project provides panel images in `JPEGImages/` and Pascal VOC labels in `Annotations/`. Its source README describes five visible defect examples: broken areas, bright spots, black or gray border areas, scratches, and non-electricity black areas.
+
+![Original PV-Multi-Defect broken-area example](../../datasets/raw/pv_multi_defect/tf1.jpg)
+
+Source description: photovoltaic panels with broken areas.
+
+![Original PV-Multi-Defect bright-spot example](../../datasets/raw/pv_multi_defect/tf2.jpg)
+
+Source description: photovoltaic panels with obvious bright spot areas.
+
+![Original PV-Multi-Defect border-area example](../../datasets/raw/pv_multi_defect/tf3.jpg)
+
+Source description: photovoltaic panels with black or gray border areas.
+
+![Original PV-Multi-Defect scratch example](../../datasets/raw/pv_multi_defect/tf4.jpg)
+
+Source description: photovoltaic panels with scratched areas.
+
+![Original PV-Multi-Defect non-electricity example](../../datasets/raw/pv_multi_defect/tf5.jpg)
+
+Source description: photovoltaic panels that have non-electricity regions and show black areas.
+
+### From PVEL-AD
+
+The PVEL-AD project describes a large near-infrared EL dataset for photovoltaic cell anomaly detection. It contains 36,543 images, anomaly-free samples, and anomalous samples from 12 defect categories. The released annotations make it a long-tail object detection task, because frequent classes such as finger interruption appear much more often than rare classes such as scratch or fragment.
+
+![Original PVEL-AD project overview](../../datasets/raw/pvel_ad/EL2021.png)
+
+Source description: the PVEL-AD project presents the dataset as a photovoltaic electroluminescence anomaly detection dataset with anomaly-free cells and 12 defect categories, including crack, star crack, finger interruption, black core, thick line, scratch, fragment, corner, printing error, horizontal dislocation, vertical dislocation, and short circuit.
+
+![Original PVEL-AD example panel](../../datasets/raw/pvel_ad/pvel.jpg)
+
+Source description: the image is used by the PVEL-AD project to show the near-infrared EL visual style of photovoltaic cell defects. In this project it is kept only as a source-data reference image; generated sample grids and class-count plots are produced separately by `build_dataset_report.py`.
 
 ## How To Run
 

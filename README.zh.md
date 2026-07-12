@@ -83,25 +83,25 @@ python3 data_tools/converters/build_yolo_detection_dataset.py --dataset pvel_ad
 然后在项目根目录运行正式 large 模型训练入口。默认脚本使用 `l` 配置。YOLO11 作为默认实验模型，YOLOv8 作为 baseline 保留，用来比较不同模型版本的结果。
 
 ```bash
-./experiments/detection/train_yolo11_pvel_ad.sh
+./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 YOLOv8 baseline：
 
 ```bash
-./experiments/detection/train_yolov8_pvel_ad.sh
+./experiments/detection/yolo_train/train_yolov8_pvel_ad.sh
 ```
 
 Apple Silicon 可以通过 Ultralytics 和 PyTorch 使用 MPS：
 
 ```bash
-DEVICE=mps ./experiments/detection/train_yolo11_pvel_ad.sh
+DEVICE=mps ./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 PV-Multi-Defect 使用对应的正式脚本：
 
 ```bash
-./experiments/detection/train_yolo11_pv_multi_defect.sh
+./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh
 ```
 
-本机资源有限时，用 `experiments/detection/yolo_validation/` 下面的 `n` 模型脚本做验证。
+本机资源有限时，运行 `./experiments/detection/run_all_yolo_n.sh`。

@@ -32,39 +32,39 @@ The shell scripts below run full training. They use the same wrapper, so the com
 
 | Dataset | YOLO11 | YOLOv8 |
 |---|---|---|
-| PVEL-AD | `./experiments/detection/train_yolo11_pvel_ad.sh` | `./experiments/detection/train_yolov8_pvel_ad.sh` |
-| PV-Multi-Defect | `./experiments/detection/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/train_yolov8_pv_multi_defect.sh` |
+| PVEL-AD | `./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh` | `./experiments/detection/yolo_train/train_yolov8_pvel_ad.sh` |
+| PV-Multi-Defect | `./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/yolo_train/train_yolov8_pv_multi_defect.sh` |
 
 The scripts above use `l` configs for formal training. The complete `n/s/m/l/x` matrix is documented in `train.md`. Local validation scripts use `n` configs and live in `experiments/detection/yolo_validation/`.
 
 PVEL-AD with YOLO11:
 
 ```bash
-./experiments/detection/train_yolo11_pvel_ad.sh
+./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 PV-Multi-Defect with YOLO11:
 
 ```bash
-./experiments/detection/train_yolo11_pv_multi_defect.sh
+./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh
 ```
 
 Both scripts accept environment overrides:
 
 ```bash
-EPOCHS=50 BATCH=8 DEVICE=0 ./experiments/detection/train_yolo11_pvel_ad.sh
+CONFIG=configs/detection/pvel_ad_yolo11m.yaml DEVICE=0 ./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 Apple Silicon can use MPS:
 
 ```bash
-DEVICE=mps ./experiments/detection/train_yolo11_pvel_ad.sh
+DEVICE=mps ./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh
 ```
 
 Use PV-Multi-Defect with its matching entry point:
 
 ```bash
-./experiments/detection/train_yolo11_pv_multi_defect.sh
+./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh
 ```
 
 ## Smoke Check

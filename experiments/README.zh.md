@@ -20,8 +20,8 @@ YOLO 实验矩阵包含 4 个完整训练组合：
 
 | 数据集 | YOLO11 脚本 | YOLOv8 脚本 |
 |---|---|---|
-| PVEL-AD | `./experiments/detection/train_yolo11_pvel_ad.sh` | `./experiments/detection/train_yolov8_pvel_ad.sh` |
-| PV-Multi-Defect | `./experiments/detection/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/train_yolov8_pv_multi_defect.sh` |
+| PVEL-AD | `./experiments/detection/yolo_train/train_yolo11_pvel_ad.sh` | `./experiments/detection/yolo_train/train_yolov8_pvel_ad.sh` |
+| PV-Multi-Defect | `./experiments/detection/yolo_train/train_yolo11_pv_multi_defect.sh` | `./experiments/detection/yolo_train/train_yolov8_pv_multi_defect.sh` |
 
 PVEL-AD 是主要 EL 缺陷检测实验，因为它包含 12 类长尾缺陷。PV-Multi-Defect 是第二个检测实验，因为它同样有目标框，但图像和类别描述的是面板级可见缺陷。
 

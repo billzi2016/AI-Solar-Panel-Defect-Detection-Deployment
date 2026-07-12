@@ -3,6 +3,28 @@ specs/
 
 # Datasets and generated data
 datasets/
+!datasets/
+datasets/*
+!datasets/raw/
+datasets/raw/*
+!datasets/raw/elpv-dataset/
+datasets/raw/elpv-dataset/*
+!datasets/raw/elpv-dataset/doc/
+datasets/raw/elpv-dataset/doc/*
+!datasets/raw/elpv-dataset/doc/images/
+datasets/raw/elpv-dataset/doc/images/*
+!datasets/raw/elpv-dataset/doc/images/overview.jpg
+!datasets/raw/pv_multi_defect/
+datasets/raw/pv_multi_defect/*
+!datasets/raw/pv_multi_defect/tf1.jpg
+!datasets/raw/pv_multi_defect/tf2.jpg
+!datasets/raw/pv_multi_defect/tf3.jpg
+!datasets/raw/pv_multi_defect/tf4.jpg
+!datasets/raw/pv_multi_defect/tf5.jpg
+!datasets/raw/pvel_ad/
+datasets/raw/pvel_ad/*
+!datasets/raw/pvel_ad/EL2021.png
+!datasets/raw/pvel_ad/pvel.jpg
 data/
 *.zip
 *.tar

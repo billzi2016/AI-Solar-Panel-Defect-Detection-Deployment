@@ -1,0 +1,13 @@
+data_root: datasets/raw/elpv-dataset/src/elpv_dataset/data
+model: resnet18
+task: binary
+pretrained: false
+epochs: 20
+imgsz: 224
+batch: 32
+learning_rate: 0.0003
+weight_decay: 0.0001
+patience: 3
+seed: 42
+device: null
+name: elpv_resnet18_binary

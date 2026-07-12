@@ -7,7 +7,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-"${SCRIPT_DIR}/train_yolo11_pvel_ad.sh"
-"${SCRIPT_DIR}/train_yolov8_pvel_ad.sh"
-"${SCRIPT_DIR}/train_yolo11_pv_multi_defect.sh"
-"${SCRIPT_DIR}/train_yolov8_pv_multi_defect.sh"
+"${SCRIPT_DIR}/yolo_train/train_yolo11_pvel_ad.sh"
+"${SCRIPT_DIR}/yolo_train/train_yolov8_pvel_ad.sh"
+"${SCRIPT_DIR}/yolo_train/train_yolo11_pv_multi_defect.sh"
+"${SCRIPT_DIR}/yolo_train/train_yolov8_pv_multi_defect.sh"

@@ -36,7 +36,55 @@ PVEL-AD 是本项目主要使用的长尾检测数据集。输入是光伏电池
 | 英文报告 | `dataset_report.md` | 说明数据规模、标注格式、类别分布和检查方法。 |
 | 中文报告 | `dataset_report.zh.md` | 中文文档使用的同一份报告。 |
 | 生成图表 | `assets/` | 从本地真实文件生成的条形图和样例拼图。 |
-| 来源示例图 | `source_examples/` | 从原数据集仓库复制的少量代表图，用于文档展示。 |
+| 来源示例图 | `datasets/raw/...` | 少量被 allowlist 放开的原始项目图片，用于文档展示；完整数据集仍然被忽略。 |
+
+## 原始项目图片
+
+它们保留在 `datasets/raw/` 中，目的是让读者先看到源数据长什么样，再去看统计脚本生成的分布图和抽样拼图。
+
+### 来自 ELPV Dataset
+
+ELPV 项目说明中把该数据集定义为从光伏组件高分辨率电致发光图像中截取出来的太阳能电池片图像。数据集包含 2,624 张标准化后的 300 x 300 灰度样本，来源于 44 个组件。每张图都有一个 0 到 1 之间的缺陷概率标签，并标注该电池片来自单晶或多晶组件。
+
+![ELPV 原始总览图](../../datasets/raw/elpv-dataset/doc/images/overview.jpg)
+
+源项目说明：ELPV 的 overview 图用颜色覆盖层表示缺陷概率。红色越深，表示对应太阳能电池片存在缺陷的可能性越高。
+
+### 来自 PV-Multi-Defect
+
+PV-Multi-Defect 项目把面板图片放在 `JPEGImages/`，把 Pascal VOC 标注放在 `Annotations/`。源 README 中给出的五类可见缺陷示例分别是：破损区域、明显亮斑、黑色或灰色边框区域、划痕区域，以及不导电导致的黑色区域。
+
+![PV-Multi-Defect 原始破损区域示例](../../datasets/raw/pv_multi_defect/tf1.jpg)
+
+源项目说明：带有破损区域的光伏面板。
+
+![PV-Multi-Defect 原始亮斑示例](../../datasets/raw/pv_multi_defect/tf2.jpg)
+
+源项目说明：带有明显亮斑区域的光伏面板。
+
+![PV-Multi-Defect 原始边框区域示例](../../datasets/raw/pv_multi_defect/tf3.jpg)
+
+源项目说明：带有黑色或灰色边框区域的光伏面板。
+
+![PV-Multi-Defect 原始划痕示例](../../datasets/raw/pv_multi_defect/tf4.jpg)
+
+源项目说明：带有划痕区域的光伏面板。
+
+![PV-Multi-Defect 原始不导电黑区示例](../../datasets/raw/pv_multi_defect/tf5.jpg)
+
+源项目说明：存在不导电区域、并呈现黑色区域的光伏面板。
+
+### 来自 PVEL-AD
+
+PVEL-AD 项目说明中把该数据集定义为面向光伏电池片异常检测的大规模近红外 EL 数据集。它包含 36,543 张图，既有无异常样本，也有 12 类缺陷样本；已发布的框标注让它成为一个长尾目标检测任务，因为断栅等高频类远多于划痕、碎片等稀有类。
+
+![PVEL-AD 原始项目总览图](../../datasets/raw/pvel_ad/EL2021.png)
+
+源项目说明：PVEL-AD 将该数据集定义为光伏电池片电致发光异常检测数据集，包含无异常电池片和 12 类缺陷样本，缺陷类型包括裂纹、星状裂纹、断栅、黑芯、粗线、划痕、碎片、掉角、印刷错误、水平错位、垂直错位和短路。
+
+![PVEL-AD 原始示例图](../../datasets/raw/pvel_ad/pvel.jpg)
+
+源项目说明：该图用于展示 PVEL-AD 近红外 EL 图像中的光伏电池片缺陷视觉形态。本项目只把它作为源数据参考图保留；由 `build_dataset_report.py` 生成的样例拼图和类别分布图会单独放在统计报告中。
 
 ## 怎么运行
 
