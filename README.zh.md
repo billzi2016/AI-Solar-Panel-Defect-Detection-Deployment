@@ -61,3 +61,13 @@
 完整文档在 GitHub Pages 上维护：
 
 https://billzi2016.github.io/AI-Solar-Panel-Defect-Detection-Deployment/
+
+## 数据集统计
+
+数据集审计内容放在 `data_tools/stats/`。这里说明 ELPV、PV-Multi-Defect 和 PVEL-AD 分别包含什么、适合什么任务、标签如何表示，以及怎么判断本地下载是否足够用于训练。
+
+在项目根目录运行：
+
+```bash
+python3 data_tools/stats/build_dataset_report.py
+```

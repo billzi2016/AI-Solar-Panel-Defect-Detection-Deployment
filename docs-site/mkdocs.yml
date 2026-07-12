@@ -50,6 +50,9 @@ nav:
       - 项目结构: zh/architecture.md
       - 数据集: zh/datasets.md
       - 算法说明: zh/algorithm.md
+      - 数据工具:
+          - 统计工具: zh/data_tools/README.md
+          - 数据集统计报告: zh/data_tools/dataset_report.md
       - 训练流程: zh/training.md
       - 部署流程: zh/deployment.md
       - 文档维护: zh/documentation.md
@@ -58,6 +61,9 @@ nav:
       - Architecture: en/architecture.md
       - Datasets: en/datasets.md
       - Algorithm: en/algorithm.md
+      - Data Tools:
+          - Statistics Tool: en/data_tools/README.md
+          - Dataset Statistics Report: en/data_tools/dataset_report.md
       - Training: en/training.md
       - Deployment: en/deployment.md
       - Documentation: en/documentation.md

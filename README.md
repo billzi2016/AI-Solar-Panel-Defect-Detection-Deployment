@@ -61,3 +61,13 @@ After the training code is added, a normal run should produce:
 The full documentation is published through GitHub Pages:
 
 https://billzi2016.github.io/AI-Solar-Panel-Defect-Detection-Deployment/
+
+## Dataset Statistics
+
+The dataset audit lives in `data_tools/stats/`. It explains what ELPV, PV-Multi-Defect, and PVEL-AD contain, which task each dataset supports, how labels are represented, and how to judge whether the local download is complete enough for training.
+
+Run the report generator from the project root:
+
+```bash
+python3 data_tools/stats/build_dataset_report.py
+```
