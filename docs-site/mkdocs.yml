@@ -46,6 +46,7 @@ plugins:
                 - ELPV: en/experiments/elpv/README.md
             - Training: en/training.md
             - Deployment: en/deployment.md
+            - Deployment Tools: en/deployment/README.md
             - Documentation: en/documentation.md
         - locale: zh
           name: 简体中文
@@ -68,6 +69,7 @@ plugins:
                 - ELPV: zh/experiments/elpv/README.md
             - 训练流程: zh/training.md
             - 部署流程: zh/deployment.md
+            - 部署工具: zh/deployment/README.md
             - 文档维护: zh/documentation.md
 
 markdown_extensions:
@@ -98,4 +100,5 @@ nav:
       - ELPV: en/experiments/elpv/README.md
   - Training: en/training.md
   - Deployment: en/deployment.md
+  - Deployment Tools: en/deployment/README.md
   - Documentation: en/documentation.md

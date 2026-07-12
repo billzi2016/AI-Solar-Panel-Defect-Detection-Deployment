@@ -2,6 +2,8 @@
 
 部署流程说明训练后的模型怎样进入推理环境。它关注的不只是能不能运行，还包括输出是否一致、延迟是否稳定、速度提升是否值得。
 
+可执行的导出工具放在 `deployment/`。YOLO checkpoint 使用 `deployment/export_yolo.py`；ELPV 的 ResNet-18 和 Swin-T checkpoint 使用 `deployment/export_elpv.py`。具体命令、输入输出约定在“部署工具”页面中维护。
+
 ## ONNX 导出
 
 ONNX 是一种模型交换格式。它把 PyTorch 中的模型计算图导出成通用格式，让其他推理后端可以加载。

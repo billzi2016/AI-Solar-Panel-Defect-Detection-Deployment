@@ -4,7 +4,47 @@ Documentation site: https://billzi2016.github.io/AI-Solar-Panel-Defect-Detection
 
 This project focuses on defect detection for solar cells and photovoltaic panels. It is not meant to be a single training script. The repository is organized around the full workflow: dataset preparation, defect recognition, anomaly detection, inference deployment, and documentation that explains how each part is expected to work.
 
-The project is currently at the documentation and engineering skeleton stage. Data tools, training scripts, deployment scripts, and model configuration will be added under the same structure.
+The project currently includes dataset statistics, VOC-to-YOLO conversion, YOLO detection experiments, ELPV image-level baselines, deployment export helpers, and a bilingual MkDocs documentation site.
+
+## Real Data Gallery
+
+The README figures below are generated from real local dataset files. The scripts read ELPV labels from `datasets/raw/elpv-dataset`, read PV-Multi-Defect and PVEL-AD Pascal VOC annotations from `datasets/raw/`, redraw the real boxes, and save JPG files under `assets/diagrams/`.
+
+### Overview
+
+![Solar defect data gallery](assets/diagrams/readme_dataset_gallery.jpg)
+
+`readme_dataset_gallery.jpg` is the compact overview. It shows the main task dimensions in one figure: image-level ELPV labels, PV-Multi-Defect surface boxes, PVEL-AD common classes, PVEL-AD rare classes, and the difference between score outputs and box outputs.
+
+Generate it with:
+
+```bash
+python3 assets/diagrams/build_readme_overview_gallery.py
+```
+
+### ELPV Probability Dimension
+
+![ELPV image-level label gallery](assets/diagrams/readme_gallery_elpv.jpg)
+
+This figure groups ELPV by its real image-level probability labels. Each row is one probability value, and each row contains multiple real samples. ELPV has no bounding boxes, so this dimension belongs to classification, regression, or anomaly scoring rather than object detection.
+
+### PV-Multi-Defect Class Dimension
+
+![PV-Multi-Defect box-label gallery](assets/diagrams/readme_gallery_pv_multi_defect.jpg)
+
+This figure groups PV-Multi-Defect by visible surface-defect class. Each row is one class, and red boxes are redrawn from the original Pascal VOC annotations. The row-level layout makes it easier to compare how different surface defects appear across multiple real samples.
+
+### PVEL-AD Class Dimension
+
+![PVEL-AD manufacturing-defect gallery](assets/diagrams/readme_gallery_pvel_ad.jpg)
+
+This figure groups PVEL-AD by manufacturing-defect class. Each row is one of the 12 PVEL-AD classes. Frequent and rare classes are both visible, which matters because aggregate detection metrics can hide weak recall on low-count classes.
+
+Generate the three dimension galleries with:
+
+```bash
+python3 assets/diagrams/build_readme_dimension_galleries.py
+```
 
 ## What the project solves
 
@@ -19,7 +59,7 @@ This project starts with reproducible public EL defect datasets. The main tasks 
 
 ## Datasets
 
-The project is planned around three public datasets.
+The project is organized around three public datasets.
 
 | Dataset | Image type | Main use | Output |
 |---|---|---|---|
@@ -49,7 +89,7 @@ The root README files are the source for the project overview. The README pages 
 
 The documentation site is healthy when `mkdocs build -f docs-site/mkdocs.yml --strict` finishes successfully. Strict mode checks navigation, page references, and broken internal links.
 
-After the training code is added, a normal run should produce:
+A normal run should produce:
 
 - Dataset reports that list image counts, class distribution, and invalid labels.
 - Training scripts that read data paths and model settings from configuration files.
@@ -105,3 +145,28 @@ PV-Multi-Defect uses matching formal scripts:
 ```
 
 For local resource-conscious validation, run `./experiments/detection/run_all_yolo_n.sh`.
+
+ELPV image-level experiments live in `experiments/elpv/` and use torchvision ResNet-18 and Swin-T baselines:
+
+```bash
+python3 experiments/elpv/run_torchvision.py train --config configs/elpv/resnet18_binary.yaml
+```
+
+## Deployment
+
+Deployment helpers live in `deployment/`. YOLO checkpoints are exported through the Ultralytics export API:
+
+```bash
+python3 deployment/export_yolo.py \
+  --model outputs/detection/pvel_ad_yolo11l/weights/best.pt \
+  --format onnx \
+  --imgsz 640
+```
+
+ELPV torchvision checkpoints are exported to ONNX with the matching config:
+
+```bash
+python3 deployment/export_elpv.py \
+  --config configs/elpv/resnet18_binary.yaml \
+  --checkpoint outputs/elpv/elpv_resnet18_binary/best.pt
+```

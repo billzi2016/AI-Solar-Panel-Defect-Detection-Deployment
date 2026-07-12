@@ -4,7 +4,47 @@
 
 这个项目围绕光伏电池片和光伏组件的缺陷检测展开。它的目标不是只训练一个模型，而是把数据整理、缺陷识别、异常发现、推理部署和文档说明放在同一个可维护的工程里。
 
-项目当前处在文档站和工程骨架阶段。代码、数据脚本、训练脚本和部署脚本会按同一套结构继续补充。
+项目当前已经包含数据集统计、VOC 到 YOLO 格式转换、YOLO 检测实验、ELPV 图像级 baseline、部署导出工具，以及中英文 MkDocs 文档站。
+
+## 真实数据 Gallery
+
+下面的 README 图片都由本地真实数据生成。脚本会从 `datasets/raw/elpv-dataset` 读取 ELPV 标签，从 `datasets/raw/` 读取 PV-Multi-Defect 和 PVEL-AD 的 Pascal VOC 标注，重新绘制真实框，并把 JPG 保存到 `assets/diagrams/`。
+
+### 总览图
+
+![Solar defect data gallery](assets/diagrams/readme_dataset_gallery.jpg)
+
+`readme_dataset_gallery.jpg` 是压缩总览图。它把主要任务维度放在一张图里：ELPV 图像级标签、PV-Multi-Defect 表面缺陷框、PVEL-AD 高频类别、PVEL-AD 稀有类别，以及分数输出和目标框输出的差异。
+
+生成命令：
+
+```bash
+python3 assets/diagrams/build_readme_overview_gallery.py
+```
+
+### ELPV 概率维度
+
+![ELPV image-level label gallery](assets/diagrams/readme_gallery_elpv.jpg)
+
+这张图按 ELPV 的真实图像级概率标签分组。每一行是一个概率值，每一行包含多张真实样本。ELPV 没有目标框，所以这一维度对应分类、回归或异常打分，而不是目标检测。
+
+### PV-Multi-Defect 类别维度
+
+![PV-Multi-Defect box-label gallery](assets/diagrams/readme_gallery_pv_multi_defect.jpg)
+
+这张图按 PV-Multi-Defect 的可见表面缺陷类别分组。每一行是一个类别，红框来自原始 Pascal VOC 标注的重新绘制。按行看多个真实样本，可以更直观看出不同表面缺陷的形态差异。
+
+### PVEL-AD 类别维度
+
+![PVEL-AD manufacturing-defect gallery](assets/diagrams/readme_gallery_pvel_ad.jpg)
+
+这张图按 PVEL-AD 的制造缺陷类别分组。每一行对应 12 类中的一类。高频类和稀有类都单独展示，因为总指标可能掩盖低样本类别的召回问题。
+
+生成三张维度图：
+
+```bash
+python3 assets/diagrams/build_readme_dimension_galleries.py
+```
 
 ## 项目要解决什么
 
@@ -19,7 +59,7 @@
 
 ## 数据集
 
-项目计划使用三个公开数据集。
+项目围绕三个公开数据集组织。
 
 | 数据集 | 图像类型 | 主要用途 | 输出目标 |
 |---|---|---|---|
@@ -49,7 +89,7 @@
 
 文档站正常时，`mkdocs build -f docs-site/mkdocs.yml --strict` 应该能完成构建。严格模式会检查导航、页面引用和链接错误。
 
-后续训练代码进入仓库后，正常结果应包含：
+正常结果应包含：
 
 - 数据检查报告能列出图像数量、类别分布和异常标注。
 - 训练脚本能从配置文件读取数据路径和模型参数。
@@ -105,3 +145,28 @@ PV-Multi-Defect 使用对应的正式脚本：
 ```
 
 本机资源有限时，运行 `./experiments/detection/run_all_yolo_n.sh`。
+
+ELPV 图像级实验放在 `experiments/elpv/`，使用 torchvision ResNet-18 和 Swin-T baseline：
+
+```bash
+python3 experiments/elpv/run_torchvision.py train --config configs/elpv/resnet18_binary.yaml
+```
+
+## 部署
+
+部署辅助工具放在 `deployment/`。YOLO checkpoint 通过 Ultralytics export API 导出：
+
+```bash
+python3 deployment/export_yolo.py \
+  --model outputs/detection/pvel_ad_yolo11l/weights/best.pt \
+  --format onnx \
+  --imgsz 640
+```
+
+ELPV torchvision checkpoint 使用对应配置导出 ONNX：
+
+```bash
+python3 deployment/export_elpv.py \
+  --config configs/elpv/resnet18_binary.yaml \
+  --checkpoint outputs/elpv/elpv_resnet18_binary/best.pt
+```

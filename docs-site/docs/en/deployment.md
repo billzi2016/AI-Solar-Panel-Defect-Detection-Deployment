@@ -2,6 +2,8 @@
 
 The deployment workflow explains how a trained model enters an inference environment. It checks more than whether the model runs. It also checks output consistency, latency stability, and whether the speedup is worth using.
 
+Executable export helpers live in `deployment/`. YOLO checkpoints use `deployment/export_yolo.py`; ELPV ResNet-18 and Swin-T checkpoints use `deployment/export_elpv.py`. Detailed command examples and input/output contracts are documented in the Deployment Tools page.
+
 ## ONNX export
 
 ONNX is a model exchange format. It exports the computation graph from PyTorch into a portable format that other inference backends can load.
