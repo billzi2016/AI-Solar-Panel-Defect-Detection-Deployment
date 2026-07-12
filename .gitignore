@@ -1,0 +1,53 @@
+# Local planning documents
+specs/
+
+# Datasets and generated data
+datasets/
+data/
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+
+# Model weights and exported inference artifacts
+weights/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.engine
+*.plan
+
+# Experiment outputs
+outputs/
+runs/
+wandb/
+mlruns/
+lightning_logs/
+
+# Python cache and environments
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# MkDocs build artifacts
+docs-site/site/
+docs-site/.cache/
+.cache/
+
+# System and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo

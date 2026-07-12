@@ -1,0 +1,63 @@
+site_name: AI Solar Panel Defect Detection Deployment
+site_description: Documentation for a solar panel defect detection and deployment project.
+site_url: "https://billzi2016.github.io/AI-Solar-Panel-Defect-Detection-Deployment/"
+
+repo_url: "https://github.com/billzi2016/AI-Solar-Panel-Defect-Detection-Deployment"
+repo_name: AI-Solar-Panel-Defect-Detection-Deployment
+
+docs_dir: docs
+site_dir: site
+
+# This file is the public documentation contract for the MkDocs site.
+# Local planning files are intentionally excluded from docs_dir and from nav.
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: zh
+          name: 简体中文
+          build: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+
+nav:
+  - GitHub: "https://github.com/billzi2016/AI-Solar-Panel-Defect-Detection-Deployment"
+  - Home: README.md
+  - 中文:
+      - 项目 README: zh/README.md
+      - 项目结构: zh/architecture.md
+      - 数据集: zh/datasets.md
+      - 算法说明: zh/algorithm.md
+      - 训练流程: zh/training.md
+      - 部署流程: zh/deployment.md
+      - 文档维护: zh/documentation.md
+  - English:
+      - Project README: en/README.md
+      - Architecture: en/architecture.md
+      - Datasets: en/datasets.md
+      - Algorithm: en/algorithm.md
+      - Training: en/training.md
+      - Deployment: en/deployment.md
+      - Documentation: en/documentation.md
